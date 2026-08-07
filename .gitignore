@@ -1,0 +1,26 @@
+# Dependencias
+node_modules
+
+# Base de datos y datos de usuarios (NO subir - contiene números de WhatsApp)
+storage/database.json
+storage/database/*.json
+
+# Sesiones y credenciales de WhatsApp (RIESGO: cualquiera controlaría el bot)
+storage/temp/
+
+# Backups
+*.bak
+
+# Archivos multimedia de la base
+storage/media/pic/
+
+# Logs
+*.log
+
+# Variables de entorno (NO subir - contienen keys)
+.env
+.env.local
+.env.*.local
+
+# Logs de PM2
+logs/
