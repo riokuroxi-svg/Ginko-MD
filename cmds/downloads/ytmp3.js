@@ -1,14 +1,23 @@
 import yts from 'yt-search'
 import fetch from 'node-fetch'
 import ffmpeg from 'fluent-ffmpeg'
-import ffmpegPath from 'ffmpeg-static'
 import { tmpdir } from 'os'
 import { randomBytes } from 'crypto'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { execSync } from 'child_process'
 
-// Configurar ffmpeg con el binario estático para que funcione sin instalación global
-if (ffmpegPath) ffmpeg.setFfmpegPath(ffmpegPath)
+// Usar ffmpeg INSTALADO EN EL SISTEMA (el que se instala con `pkg install ffmpeg` en Termux).
+// Si ffmpeg no está disponible, enviamos el MP3 directamente sin conversión para que el comando no falle.
+let ffmpegAvailable = false
+try {
+  // Verificar si ffmpeg existe en el sistema
+  execSync('which ffmpeg', { stdio: 'ignore' })
+  ffmpegAvailable = true
+} catch {
+  ffmpegAvailable = false
+  console.log('⚠️  ffmpeg no encontrado en el sistema - los audios se enviarán como MP3. Instálalo con "pkg install ffmpeg" para duración exacta.')
+}
 
 const cmd = {
   command: ['play', 'mp3', 'ytmp3', 'ytaudio', 'playaudio'],
@@ -63,26 +72,35 @@ const cmd = {
         return msg.reply('《✧》No se encontró un video válido de YouTube.')
       }
 
-      await msg.react('⏳')
       const audio = await getAudioFromApi(url)
 
       if (!audio?.buffer?.length) {
-        await msg.react('❌')
         return msg.reply('《✧》No se pudo descargar el *audio*, intenta más tarde.')
       }
 
-      // Convertir a OGG/Opus para que WhatsApp lo reproduzca como nota de voz
-      // con duración correcta (todos los bots estables hacen esto)
-      const oggBuffer = await convertToOpus(audio.buffer)
-      
+      // Si ffmpeg está disponible, convertir a OGG/Opus para duración exacta.
+      // Si NO está disponible (ej: Termux sin pkg install ffmpeg), enviar MP3 directamente.
+      let finalBuffer = audio.buffer
+      let mimetype = 'audio/mpeg'
+      let fileName = `${sanitizeFilename(title)}.mp3`
+
+      if (ffmpegAvailable) {
+        try {
+          finalBuffer = await convertToOpus(audio.buffer)
+          mimetype = 'audio/ogg; codecs=opus'
+        } catch (e) {
+          console.log('Conversión a opus falló, enviando MP3:', e.message)
+          // Fallback a MP3 si la conversión falla
+        }
+      }
+
+      // Enviar como AUDIO NORMAL (no nota de voz PTT) para que aparezca el nombre real del archivo
       await sock.sendMessage(msg.chat, {
-        audio: oggBuffer,
-        fileName: audio.name || `${title}.mp3`,
-        mimetype: 'audio/ogg; codecs=opus',
-        ptt: true // Enviar como nota de voz (reproduce automáticamente, muestra duración)
+        audio: finalBuffer,
+        fileName: fileName,
+        mimetype: mimetype
       }, { quoted: msg })
 
-      await msg.react('✅')
     } catch (e) {
       console.error('Error en play:', e)
       await msg.reply(
@@ -162,10 +180,19 @@ async function getAudioFromApi(url) {
   }
 }
 
+// Limpiar caracteres no válidos en nombres de archivo
+function sanitizeFilename(name = 'audio') {
+  return String(name)
+    .replace(/[\\/:*?"<>|]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 120) || 'audio'
+}
+
 /**
- * Convierte un buffer MP3 a OGG/Opus (formato de notas de voz de WhatsApp)
- * usando ffmpeg. Esto garantiza que la duración se muestre correctamente
- * y el audio se reproduzca automáticamente.
+ * Convierte un buffer MP3 a OGG/Opus (formato de audio de WhatsApp)
+ * usando el ffmpeg INSTALADO EN EL SISTEMA.
+ * Se llama solo si ffmpeg está disponible.
  */
 function convertToOpus(inputBuffer) {
   return new Promise((resolve, reject) => {
@@ -180,10 +207,6 @@ function convertToOpus(inputBuffer) {
           .audioBitrate('128k')
           .audioChannels(2)
           .audioFrequency(48000)
-          .outputOptions([
-            '-acodec libopus',
-            '-application voip' // Optimizado para voz/audio en WhatsApp
-          ])
           .on('end', async () => {
             try {
               const converted = await fs.readFile(tmpPathOut)
@@ -195,11 +218,9 @@ function convertToOpus(inputBuffer) {
             }
           })
           .on('error', async (err) => {
-            // Si la conversión falla por alguna razón (ffmpeg no instalado en Termux),
-            // devolvemos el MP3 original como fallback para no romper el comando
+            // Limpiar temporales y devolver error
             try { await Promise.all([fs.unlink(tmpPathIn), fs.unlink(tmpPathOut).catch(() => {})]) } catch {}
-            console.warn('Conversión opus falló, enviando MP3 como fallback:', err.message)
-            resolve(inputBuffer)
+            reject(err)
           })
           .save(tmpPathOut)
       })
