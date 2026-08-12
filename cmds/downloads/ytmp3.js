@@ -1,5 +1,8 @@
 import yts from 'yt-search'
 import fetch from 'node-fetch'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const ID3 = require('node-id3')
 
 const cmd = {
   command: ['play', 'mp3', 'ytmp3', 'ytaudio', 'playaudio'],
@@ -19,6 +22,7 @@ const cmd = {
       let url = query
       let title = 'audio'
       let thumbnail = null
+      let channel = 'Desconocido'
 
       try {
         const video_info = await getVideoInfo(query, video_id)
@@ -27,9 +31,9 @@ const cmd = {
           url = video_info.url || `https://youtu.be/${video_info.videoId}`
           title = video_info.title || title
           thumbnail = video_info.image || video_info.thumbnail || null
+          channel = video_info.author?.name || video_info.author || 'Desconocido'
 
           const views = Number(video_info.views || 0).toLocaleString('es-HN')
-          const channel = video_info.author?.name || video_info.author || 'Desconocido'
 
           const info_message = `➩ Descargando › *${title}*
 
@@ -61,13 +65,20 @@ const cmd = {
       }
 
       // MP3 directo de la API, SIN conversión.
-      // mimetype audio/mpeg => WhatsApp lo muestra como archivo de audio normal
-      // (no como nota de voz redonda), reproduce con duración correcta
-      // y muestra el nombre real de la canción.
+      // Incrustamos etiquetas ID3 (título, artista, álbum, portada) dentro del archivo
+      // para que al abrirlo en un reproductor de música aparezca con nombre y carátula.
+      // Si escribir tags falla por cualquier razón, mandamos el MP3 tal cual para no romper el comando.
+      let finalBuffer = audio.buffer
+      try {
+        finalBuffer = await addId3Tags(audio.buffer, { title, artist: channel, thumbnail })
+      } catch (e) {
+        console.log('⚠️  No se pudieron escribir ID3 tags, enviando MP3 sin tags:', e.message)
+      }
+
       const fileName = `${sanitizeFilename(title)}.mp3`
 
       await sock.sendMessage(msg.chat, {
-        audio: audio.buffer,
+        audio: finalBuffer,
         fileName: fileName,
         mimetype: 'audio/mpeg'
       }, { quoted: msg })
@@ -157,4 +168,52 @@ function sanitizeFilename(name = 'audio') {
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 120) || 'audio'
+}
+
+/**
+ * Escribe etiquetas ID3v2 en el buffer MP3 (título, artista, álbum, portada).
+ * Retorna un nuevo buffer con los tags incrustados.
+ * Usa node-id3, que es puro JavaScript (sin dependencias nativas,
+ * funciona perfecto en Termux).
+ */
+async function addId3Tags(mp3Buffer, { title, artist, thumbnail }) {
+  const tags = {
+    title: title || 'Audio',
+    artist: artist || 'Desconocido',
+    album: 'Descargado con Ginko-MD',
+    performerInfo: 'Ginko-MD'
+  }
+
+  // Descargar la portada y agregarla como APIC (front cover)
+  if (thumbnail) {
+    try {
+      const coverRes = await fetch(thumbnail, {
+        headers: { 'user-agent': 'Mozilla/5.0' }
+      })
+      if (coverRes.ok) {
+        const coverBuf = Buffer.from(await coverRes.arrayBuffer())
+        // Detectar mime real (YouTube usualmente devuelve jpg)
+        const sig = coverBuf.slice(0, 4).toString('hex')
+        let mime = 'image/jpeg'
+        if (sig.startsWith('89504e47')) mime = 'image/png'
+        else if (sig.startsWith('474946')) mime = 'image/gif'
+        else if (sig.startsWith('52494646')) mime = 'image/webp'
+        // node-id3 APIC soporta jpeg/png/gif
+        if (mime !== 'image/webp') {
+          tags.image = {
+            mime: mime,
+            type: { id: 3, name: 'front cover' },
+            description: 'cover',
+            imageBuffer: coverBuf
+          }
+        }
+      }
+    } catch (e) {
+      console.log('⚠️  No se pudo descargar la portada:', e.message)
+    }
+  }
+
+  // write(tags, buffer) devuelve un NUEVO buffer con los tags al inicio
+  const tagged = ID3.write(tags, mp3Buffer)
+  return Buffer.isBuffer(tagged) ? tagged : mp3Buffer
 }
