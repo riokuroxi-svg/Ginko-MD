@@ -128,17 +128,17 @@ async function getAudioFromApi(url) {
 
   const json = await res.json()
 
-  if (!json?.status || !json?.descarga?.url) {
+  if (!json?.status || !json?.datos?.url) {
     throw new Error('No se encontró el enlace de descarga en la API.')
   }
 
-  const audio_res = await fetch(json.descarga.url)
+  const audio_res = await fetch(json.datos.url)
   if (!audio_res.ok) throw new Error(`No se pudo descargar el audio: HTTP ${audio_res.status}`)
 
   const buffer = await audio_res.buffer()
 
   return {
     buffer,
-    name: json.descarga.archivo || 'audio.mp3'
+    name: json.datos.archivo || 'audio.mp3'
   }
 }
