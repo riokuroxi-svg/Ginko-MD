@@ -6,11 +6,11 @@ import { fileURLToPath } from "url";
 // Ejemplo: México 525574370309
 global.owner = ['525574370309'];
 
-// Créditos originales (los dejamos por respeto al autor, pero tu bot es Ginko-MD)
-global.dev = "🍁 Ginko-MD | Basado en YukiBot-MD por Destroy";
+// Créditos
+global.dev = "🍁 Ginko-MD";
 global.links = {
   channel: "",
-  github: "https://github.com/riokuroxi-svg/Ginko-MD-V1",
+  github: "",
   gmail: ""
 }
 global.my = {

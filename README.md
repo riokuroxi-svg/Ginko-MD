@@ -1,13 +1,12 @@
 # 🍁 Ginko-MD — Bot WhatsApp Multi-Device
 
-Bot de WhatsApp estable, multifuncional, basado en Baileys (MD).
-Proyecto propio adaptado desde YukiBot-MD por Destroy.
+Bot de WhatsApp estable, multifuncional, basado en Baileys (Multi-Device).
 
 ---
 
 ## 📝 Descripción
 
-Ginko-MD es un bot de WhatsApp con muchísimas funciones: descargas de música/videos, stickers, juegos/gacha, economía, IA, gestión de grupos, anti-link, bienvenidas, y mucho más. Funciona en Termux/Android, VPS Linux, Pterodactyl y Docker.
+Ginko-MD es un bot de WhatsApp con muchísimas funciones: descargas de música/videos, stickers, juegos/gacha, economía, IA, gestión de grupos, anti-link, bienvenidas, y mucho más. Funciona en Termux/Android, VPS Linux, y cualquier servidor que soporte Node.js.
 
 ---
 
@@ -35,12 +34,12 @@ termux-setup-storage
 
 2. Instalar dependencias del sistema:
 ```bash
-apt update && apt upgrade -y && pkg install -y git nodejs-lts ffmpeg imagemagick
+apt update && apt upgrade -y && pkg install -y git nodejs ffmpeg imagemagick
 ```
 
 3. Clonar el repositorio:
 ```bash
-git clone https://github.com/riokuroxi-svg/Ginko-MD.git
+git clone <TU_URL_DE_GITHUB_AQUI> Ginko-MD
 ```
 
 4. Entrar a la carpeta:
@@ -69,7 +68,7 @@ npm start
 ```bash
 apt update && apt upgrade -y
 apt install -y git nodejs npm ffmpeg imagemagick
-git clone https://github.com/riokuroxi-svg/Ginko-MD.git
+git clone <TU_URL_DE_GITHUB_AQUI> Ginko-MD
 cd Ginko-MD
 npm install
 # Edita settings.js con tu número
@@ -108,9 +107,3 @@ cd ~/Ginko-MD
 rm -rf Sessions/Owner
 npm start
 ```
-
----
-
-## 🙏 Créditos
-- Basado originalmente en **YukiBot-MD** por [@iamDestroy](https://github.com/iamDestroy)
-- Librería de conexión: Baileys (WhiskeySockets) / WaSocket
