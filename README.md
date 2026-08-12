@@ -1,3 +1,7 @@
+<p align="center">
+<img src="./assets/bocchi-banner.png" alt="Bocchi banner" width="100%"/>
+</p>
+
 <h1 align="center">🍁 Ginko-MD</h1>
 <h3 align="center">Bot de WhatsApp Multi-Device — Estable, rápido y multifuncional</h3>
 
@@ -9,57 +13,91 @@
 <img src="https://img.shields.io/badge/Baileys-MD-25D366?style=for-the-badge&logo=whatsapp">
 </p>
 
+<p align="center">
+  <sub>🍁 IG: <a href="https://instagram.com/__ikg.05">@__ikg.05</a></sub>
+</p>
 
 ---
 
 ## 📖 Descripción
-Ginko-MD es un bot para WhatsApp Multi-Device construido sobre Baileys/WaSocket. Tiene todas las funciones que necesitas: descargas de música y videos, stickers, juegos, sistema de economía, gestión de grupos, comandos de IA y mucho más. Funciona perfectamente en Termux (Android), VPS Linux, paneles Pterodactyl/BoxMine y servidores en la nube.
+Ginko-MD es un bot para WhatsApp Multi-Device construido sobre WaSocket/Baileys. Tiene todas las funciones que necesitas: descargas de música y videos, stickers, juegos de gacha, sistema de economía, gestión completa de grupos, comandos de IA, anti-enlaces, bienvenidas y mucho más. Funciona perfectamente en **Termux (Android)**, VPS Linux y paneles Pterodactyl/BoxMine.
 
 ---
 
 ## ✨ Características principales
-| Categoría | Funciones |
+| 📂 Categoría | Funciones disponibles |
 |---|---|
-| 📥 **Descargas** | YouTube (audio y video), TikTok, Instagram, Facebook, Twitter/X, Pinterest, Mediafire, Google Drive |
-| 🎨 **Stickers** | Crea stickers desde imagen/video, stickers con texto, pack de stickers |
-| 👥 **Grupos** | Kick/add/promote/demote, anti-enlaces, mensajes de bienvenida/despedida, anti-eliminar mensajes |
-| 🎮 **Juegos** | Sistema de gacha/waifus, economía/monedas, niveles/experiencia, dado/moneda |
-| 🤖 **IA** | Chat con IA, traductor automático, texto a voz |
-| 🔧 **Utilidades** | Clonar repositorios, perfil de usuario, búsqueda de imágenes, creador de QR |
-| 🛡️ **Estabilidad** | Auto-reconexión, código de vinculación de 8 dígitos, no se cae por errores en comandos, anti-ban |
+| 📥 **Descargas** | YouTube (audio 320kbps / video), TikTok, Instagram, Facebook, Twitter/X, Pinterest, Mediafire, Google Drive, APKs |
+| 🎨 **Stickers** | Crea stickers desde imagen/video, stickers con texto, packs de stickers, metadata personalizada |
+| 👥 **Grupos** | Kick / add / promover / degradar admins, anti-enlaces, mensajes de bienvenida, anti-eliminar mensajes |
+| 🎮 **Juegos y economía** | Sistema de gacha/waifus, monedas, niveles/experiencia, dado, moneda |
+| 🤖 **IA y utilidades** | Chat con IA, traductor automático, texto a voz, búsqueda de imágenes, creador de códigos QR |
+| 🛡️ **Estabilidad** | Auto-reconexión, código de vinculación de 8 dígitos, anti-ban, no se cae por errores en comandos |
+
+---
 
 ---
 
 ## 🚀 Instalación
 
 ### 📱 Método 1: Termux (Android)
-Ejecuta estos comandos **uno por uno** en la aplicación de Termux:
+**Copia y pega estos comandos UNO POR UNO en Termux, no te saltes ninguno:**
+
+#### Paso 1: Dar permiso de almacenamiento
 ```bash
-# 1. Dar permiso de almacenamiento
 termux-setup-storage
+```
+*Acepta el permiso cuando aparezca la ventana.*
 
-# 2. Instalar dependencias del sistema
+#### Paso 2: Actualizar paquetes e instalar dependencias del sistema
+```bash
 apt update && apt upgrade -y
-pkg install -y git nodejs ffmpeg imagemagick
+pkg install -y git nodejs-lts ffmpeg imagemagick
+```
+*Si te pregunta algo durante la instalación, escribe `y` y presiona ENTER.*
 
-# 3. Clonar el repositorio
+#### Paso 3: Clonar el repositorio de Ginko-MD
+```bash
 git clone https://github.com/riokuroxi-svg/Ginko-MD.git
-
-# 4. Entrar a la carpeta del bot
-cd Ginko-MD
-
-# 5. Instalar dependencias de Node
-npm install --no-audit --no-fund
-
-# 6. Configurar tu número de dueño
-# Edita la línea global.owner en settings.js y pon tu número (sin + ni espacios, ejemplo México: 525574370309)
-nano settings.js
-
-# 7. Arrancar el bot
-npm start
 ```
 
-> 💡 Si durante la instalación te aparece el mensaje `(Y/I/N/O/D/Z) [default=N] ?` escribe la letra `y` y presiona ENTER para continuar.
+#### Paso 4: Entrar a la carpeta del bot
+```bash
+cd Ginko-MD
+```
+
+#### Paso 5: Instalar dependencias de Node.js
+```bash
+npm install --no-audit --no-fund
+```
+*Espera que termine, puede tardar de 2 a 5 minutos.*
+
+#### Paso 6: Configurar tu número (dueño del bot)
+Abre el archivo de configuración:
+```bash
+nano settings.js
+```
+Busca la línea que dice:
+```js
+global.owner = ['525574370309'];
+```
+Cambia el número por tu número de teléfono (solo dígitos, sin `+`, sin espacios, con código de país). Por ejemplo, si eres de México es `52` seguido de tu número.
+
+Guarda el archivo:
+1. Presiona `Ctrl + O`
+2. Presiona `ENTER`
+3. Presiona `Ctrl + X`
+
+#### Paso 7: Arrancar el bot por primera vez
+```bash
+npm start
+```
+- Cuando aparezca el menú de opciones, elige la opción `2` para usar código de 8 dígitos.
+- Ingresa el número del bot con código de país cuando te lo pida.
+- Copia el código de vinculación que aparece en pantalla y ponlo en WhatsApp:
+  > Ajustes → Dispositivos vinculados → Vincular un dispositivo → Vincular con número de teléfono
+
+✅ ¡Listo! El bot estará conectado.
 
 ---
 
@@ -74,7 +112,7 @@ git clone https://github.com/riokuroxi-svg/Ginko-MD.git
 cd Ginko-MD
 npm install --no-audit --no-fund
 
-# Editar tu número de dueño
+# Edita tu número de dueño
 nano settings.js
 
 # Arrancar
@@ -83,13 +121,13 @@ npm start
 
 ---
 
-### 🟢 Método 3: Dejarlo corriendo en segundo plano (PM2)
-Para que no se apague cuando cierres Termux/la terminal:
+### 🟢 Dejar el bot corriendo en segundo plano (PM2)
+Para que no se apague cuando cierres Termux o la terminal:
 ```bash
-# Instalar PM2
+# Instalar PM2 globalmente
 npm install -g pm2
 
-# (Solo Termux) Mantener Termux encendido
+# Solo para Termux: mantener la aplicación encendida
 termux-wake-lock
 
 # Iniciar el bot en segundo plano
@@ -97,83 +135,88 @@ pm2 start index.js --name ginko
 pm2 save
 ```
 
-Comandos útiles de PM2:
 | Acción | Comando |
 |---|---|
-| Ver logs en tiempo real | `pm2 logs ginko` |
+| Ver logs en tiempo real (lo que está pasando) | `pm2 logs ginko` |
 | Parar el bot | `pm2 stop ginko` |
 | Reiniciar el bot | `pm2 restart ginko` |
-| Eliminar el proceso | `pm2 delete ginko` |
+| Eliminar el proceso de PM2 | `pm2 delete ginko` |
+| Ver estado del bot | `pm2 status` |
 
 ---
 
 ## 🔄 Solución de problemas comunes
-### Si se corta el internet o se apaga el bot
+
+### Si se cortó el internet o se apagó el bot
 Solo vuelve a entrar a la carpeta y arráncalo de nuevo:
 ```bash
 cd ~/Ginko-MD && npm start
 ```
 
-### Volver a vincular de cero / cambiar de número
-Si quieres borrar la sesión actual y vincular un número nuevo:
+### Volver a vincular de cero (cambiar de número)
+Si quieres borrar la sesión actual y vincular otro número:
 ```bash
 cd ~/Ginko-MD
 rm -rf Sessions/Owner
 npm start
 ```
 
-### Error de permisos / módulos no encontrados
-Vuelve a instalar las dependencias:
+### Error "no se encontró el módulo" o dependencias rotas
+Vuelve a instalar los paquetes:
 ```bash
 cd ~/Ginko-MD
 rm -rf node_modules package-lock.json
 npm install --no-audit --no-fund
 ```
 
+### El código de vinculación no aparece o da error
+Asegúrate de que el número del bot esté escrito correctamente (solo dígitos, con código de país, sin `+` ni espacios). Si sigue fallando, borra la sesión con el comando de arriba y vuelve a arrancar.
+
 ---
 
-## 📝 Comandos básicos
-| Prefijo por defecto | Ejemplo |
+## 📝 Cómo usar el bot
+El prefijo por defecto es el **punto** (`.`). Algunos comandos básicos:
+| Comando | Qué hace |
 |---|---|
-| `.` (punto) | `.play canción`, `.menu`, `.sticker` |
+| `.play <canción>` | Descarga música de YouTube |
+| `.mp4 <video>` | Descarga video de YouTube |
+| `.menu` | Muestra la lista completa de comandos |
+| `.sticker` | Convierte una imagen/video en sticker al responderla |
+| `.ping` | Muestra la velocidad de respuesta del bot |
 
-Puedes cambiar el prefijo o configurar más opciones en `settings.js`.
+Puedes cambiar el prefijo o cualquier otra configuración editando el archivo `settings.js`.
 
 ---
 
 ## 📁 Estructura del proyecto
 ```
 Ginko-MD/
-├── cmds/               # Todos los comandos del bot (organizados por categorías)
-│   ├── downloads/      # Comandos de descarga (ytmp3, tiktok, ig, etc.)
+├── assets/             # Imágenes y recursos
+├── cmds/               # Todos los comandos del bot (por categorías)
+│   ├── downloads/      # Comandos de descarga (ytmp3, tiktok, ig, fb...)
 │   ├── group/          # Comandos de administración de grupos
-│   ├── gacha/          # Sistema de gacha/waifus y economía
-│   ├── main/           # Comandos de ayuda, menú, ping
+│   ├── gacha/          # Sistema de gacha, waifus y economía
+│   ├── main/           # Comandos básicos: menú, help, ping
 │   ├── stickers/       # Creador de stickers
-│   └── utils/          # Utilidades varias (IA, traductor, etc.)
-├── core/               # Lógica principal (conexión a WA, base de datos, exif)
-├── Sessions/           # Carpeta donde se guarda tu sesión de WhatsApp
-├── tmp/                # Archivos temporales
-├── index.js            # Punto de entrada del bot
-├── main.js             # Manejador de comandos
-├── settings.js         # Archivo de configuración principal
+│   └── utils/          # Utilidades: IA, traductor, imágenes
+├── core/               # Lógica interna (conexión a WA, base de datos)
+├── Sessions/           # Aquí se guarda tu sesión de WhatsApp (no borrar si no quieres volver a vincular)
+├── tmp/                # Archivos temporales que se borran automáticamente
+├── index.js            # Punto de entrada del bot y banner
+├── main.js             # Router y manejador de comandos
+├── settings.js         # Archivo de CONFIGURACIÓN PRINCIPAL (tu número, ajustes)
 └── package.json        # Dependencias
 ```
 
 ---
 
 ## ⚠️ Aviso importante
-Este proyecto es para fines educativos y de uso personal. El uso de bots de WhatsApp puede violar los Términos de Servicio de WhatsApp. Usa este bot bajo tu propia responsabilidad. No nos hacemos responsables por baneos o suspensiones de cuenta.
-
----
-
-## 🙏 Créditos
-- Construido sobre [WaSocket](https://github.com/this-xys/WaSocket) y Baileys
-- Inspirado en bots estables del ecosistema MD
-- Iconos/emojis: Twemoji
+Este proyecto es para fines educativos y uso personal. El uso de bots de WhatsApp puede violar los Términos de Servicio de WhatsApp. Usa este bot bajo tu propia responsabilidad. No nos hacemos responsables por baneos o suspensiones de cuenta.
 
 ---
 
 <p align="center">
-  <sub>🍁 Hecho con cariño para la comunidad</sub>
+  <img src="https://img.shields.io/badge/Made%20with-%F0%9F%8D%81-orange?style=flat-square">
+  <br>
+  <sub>🍁 Ginko-MD — 2025-2026</sub>
 </p>

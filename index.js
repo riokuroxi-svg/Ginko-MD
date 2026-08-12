@@ -38,16 +38,21 @@ function normalizePhone(input) {
 }
 
 const { say } = cfonts
-console.log(chalk.magentaBright('\n🍁 Iniciando...'))
-  say('Ginko-MD', {
-  align: 'center',           
-  gradient: ['red', 'magenta'] 
+console.log('\n')
+  say('GINKO-MD', {
+  font: 'block',
+  align: 'center',
+  gradient: ['#ff7eb3', '#e11d48', '#f97316'],
+  letterSpacing: 1,
+  space: false
 })
   say('Bot WhatsApp Multi-Device', {
-  font: 'console',
+  font: 'chrome',
   align: 'center',
-  gradient: ['blue', 'magenta']
+  gradient: ['blue', 'magenta', 'crimson'],
+  letterSpacing: 2
 })
+console.log(chalk.cyan('      🍁 Hecho por __ikg.05 en Instagram\n') + chalk.gray('         ────────────────────────────\n'))
 
 const botTypes = [
   { name: 'SubBot', folder: './Sessions/Subs', starter: startSubBot },
