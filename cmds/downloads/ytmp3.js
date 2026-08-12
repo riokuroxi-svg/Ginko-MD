@@ -1,23 +1,5 @@
 import yts from 'yt-search'
 import fetch from 'node-fetch'
-import ffmpeg from 'fluent-ffmpeg'
-import { tmpdir } from 'os'
-import { randomBytes } from 'crypto'
-import { promises as fs } from 'fs'
-import path from 'path'
-import { execSync } from 'child_process'
-
-// Usar ffmpeg INSTALADO EN EL SISTEMA (el que se instala con `pkg install ffmpeg` en Termux).
-// Si ffmpeg no está disponible, enviamos el MP3 directamente sin conversión para que el comando no falle.
-let ffmpegAvailable = false
-try {
-  // Verificar si ffmpeg existe en el sistema
-  execSync('which ffmpeg', { stdio: 'ignore' })
-  ffmpegAvailable = true
-} catch {
-  ffmpegAvailable = false
-  console.log('⚠️  ffmpeg no encontrado en el sistema - los audios se enviarán como MP3. Instálalo con "pkg install ffmpeg" para duración exacta.')
-}
 
 const cmd = {
   command: ['play', 'mp3', 'ytmp3', 'ytaudio', 'playaudio'],
@@ -78,27 +60,16 @@ const cmd = {
         return msg.reply('《✧》No se pudo descargar el *audio*, intenta más tarde.')
       }
 
-      // Si ffmpeg está disponible, convertir a OGG/Opus para duración exacta.
-      // Si NO está disponible (ej: Termux sin pkg install ffmpeg), enviar MP3 directamente.
-      let finalBuffer = audio.buffer
-      let mimetype = 'audio/mpeg'
-      let fileName = `${sanitizeFilename(title)}.mp3`
+      // MP3 directo de la API, SIN conversión.
+      // mimetype audio/mpeg => WhatsApp lo muestra como archivo de audio normal
+      // (no como nota de voz redonda), reproduce con duración correcta
+      // y muestra el nombre real de la canción.
+      const fileName = `${sanitizeFilename(title)}.mp3`
 
-      if (ffmpegAvailable) {
-        try {
-          finalBuffer = await convertToOpus(audio.buffer)
-          mimetype = 'audio/ogg; codecs=opus'
-        } catch (e) {
-          console.log('Conversión a opus falló, enviando MP3:', e.message)
-          // Fallback a MP3 si la conversión falla
-        }
-      }
-
-      // Enviar como AUDIO NORMAL (no nota de voz PTT) para que aparezca el nombre real del archivo
       await sock.sendMessage(msg.chat, {
-        audio: finalBuffer,
+        audio: audio.buffer,
         fileName: fileName,
-        mimetype: mimetype
+        mimetype: 'audio/mpeg'
       }, { quoted: msg })
 
     } catch (e) {
@@ -156,7 +127,7 @@ async function getVideoInfo(input, video_id) {
 
 async function getAudioFromApi(url) {
   const api_url = `https://api.lempi.lat/dl/yta?url=${encodeURIComponent(url)}&apikey=montekey28`
-  
+
   const res = await fetch(api_url, {
     headers: { 'accept': 'application/json' }
   })
@@ -180,50 +151,10 @@ async function getAudioFromApi(url) {
   }
 }
 
-// Limpiar caracteres no válidos en nombres de archivo
 function sanitizeFilename(name = 'audio') {
   return String(name)
     .replace(/[\\/:*?"<>|]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 120) || 'audio'
-}
-
-/**
- * Convierte un buffer MP3 a OGG/Opus (formato de audio de WhatsApp)
- * usando el ffmpeg INSTALADO EN EL SISTEMA.
- * Se llama solo si ffmpeg está disponible.
- */
-function convertToOpus(inputBuffer) {
-  return new Promise((resolve, reject) => {
-    const tmpPathIn = path.join(tmpdir(), `ginko-${randomBytes(8).toString('hex')}.mp3`)
-    const tmpPathOut = path.join(tmpdir(), `ginko-${randomBytes(8).toString('hex')}.ogg`)
-    
-    fs.writeFile(tmpPathIn, inputBuffer)
-      .then(() => {
-        ffmpeg(tmpPathIn)
-          .toFormat('ogg')
-          .audioCodec('libopus')
-          .audioBitrate('128k')
-          .audioChannels(2)
-          .audioFrequency(48000)
-          .on('end', async () => {
-            try {
-              const converted = await fs.readFile(tmpPathOut)
-              // Limpiar archivos temporales
-              await Promise.all([fs.unlink(tmpPathIn), fs.unlink(tmpPathOut)])
-              resolve(converted)
-            } catch (e) {
-              reject(e)
-            }
-          })
-          .on('error', async (err) => {
-            // Limpiar temporales y devolver error
-            try { await Promise.all([fs.unlink(tmpPathIn), fs.unlink(tmpPathOut).catch(() => {})]) } catch {}
-            reject(err)
-          })
-          .save(tmpPathOut)
-      })
-      .catch(reject)
-  })
 }
