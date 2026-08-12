@@ -16,7 +16,7 @@ export default {
     const currency = settings?.currency;
     try {
       if (args.length < 2) {
-        return msg.reply(`❀ Debes especificar un precio para subastar el personaje.\n> Ejemplo » *${usedPrefix + command} 5000 Yuki Suou*`);
+        return msg.reply(`❀ Debes especificar un precio para subastar el personaje.\n> Ejemplo » *${usedPrefix + command} 5000 Ginko-MD*`);
       }
       const price = parseInt(args[0]);
       if (isNaN(price) || price < 2000) {

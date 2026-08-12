@@ -22,7 +22,7 @@ export default {
       return msg.reply(`ꕥ Los comandos de *Gacha* están desactivados en este grupo.\n\nUn *administrador* puede activarlos con el comando:\n» *${usedPrefix}gacha on*`);
     }    
     if (!args.length) {
-      return msg.reply(`❀ Debes especificar un personaje.\n> Ejemplo » *${usedPrefix + command} Yuki Suou*`);
+      return msg.reply(`❀ Debes especificar un personaje.\n> Ejemplo » *${usedPrefix + command} Ginko-MD*`);
     }
     db.setCreate('chat_users', [msg.chat, msg.sender], 'favorite', '');
     db.setCreate('users', msg.sender, 'favorite', '');    

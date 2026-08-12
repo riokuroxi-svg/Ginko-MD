@@ -121,9 +121,9 @@ export const defSets = {
   link: 'https://api.yuki-wabot.my.id',
   banner: 'https://cdn.yuki-wabot.my.id/files/tCVD.jpeg',
   icon: 'https://cdn.yuki-wabot.my.id/files/4U5V.jpeg',
-  currency: 'Yenes',
-  namebot: 'Yuki',
-  botname: 'Yuki Suou',
+  currency: 'Monedas',
+  namebot: 'Ginko',
+  botname: 'Ginko-MD',
   owner: ''
 };
 
@@ -195,8 +195,8 @@ export function initDB() {
       banner TEXT DEFAULT 'https://cdn.yuki-wabot.my.id/files/tCVD.jpeg',
       icon TEXT DEFAULT 'https://cdn.yuki-wabot.my.id/files/4U5V.jpeg',
       currency TEXT DEFAULT 'Yenes',
-      namebot TEXT DEFAULT 'Yuki',
-      botname TEXT DEFAULT 'Yuki Suou',
+      namebot TEXT DEFAULT 'Ginko',
+      botname TEXT DEFAULT 'Ginko-MD',
       owner TEXT DEFAULT ''
     )`);
   db.exec(`CREATE TABLE IF NOT EXISTS characters (id TEXT PRIMARY KEY, data TEXT)`);

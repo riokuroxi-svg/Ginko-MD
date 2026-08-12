@@ -92,7 +92,7 @@ export default {
       } catch {}
       if (!responseText) {
         try {
-          const res = await fetch(`${global.APIs.yuki.url}/ai/gptprompt?text=${encodeURIComponent(text)}&prompt=${encodeURIComponent(basePrompt)}&key=${global.APIs.yuki.key}`);
+          const res = await fetch(`${global.APIs.Ginko.url}/ai/gptprompt?text=${encodeURIComponent(text)}&prompt=${encodeURIComponent(basePrompt)}&key=${global.APIs.Ginko.key}`);
           const json = await res.json();
           if (json?.result?.text) responseText = json.result.text;
           else if (json?.result) responseText = json.result;

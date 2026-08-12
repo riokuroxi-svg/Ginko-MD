@@ -1,7 +1,7 @@
 {
-  "name": "yukiwabot",
-  "version": "3.2",
-  "description": "WhatsApp multi Device, updated with better performance",
+  "name": "ginko-md",
+  "version": "1.0.0",
+  "description": "Ginko-MD — Bot WhatsApp Multi-Device, estable y fácil de usar",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -19,13 +19,14 @@
   "keywords": [
     "whatsapp-bot",
     "baileys-md",
-    "multi-device"
+    "multi-device",
+    "ginko-md"
   ],
-  "author": "iamDestroy",
+  "author": "Tu",
   "license": "MIT",
   "engines": {
-    "node": ">=22.13.0",
-    "npm": ">=10.9.4"
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   },
   "dependencies": {
     "@vitalets/google-translate-api": "latest",

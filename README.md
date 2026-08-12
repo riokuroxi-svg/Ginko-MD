@@ -1,211 +1,116 @@
-> [!NOTE]
-> **Este proyecto está en constante evolución. Estamos comprometidos en ofrecer a nuestra comunidad un Bot increíble. Te invitamos a instalarlo y para estar al tanto de todas las novedades. [¡Únete a nuestro nuevo canal!](https://whatsapp.com/channel/0029Vb64nWqLo4hb8cuxe23n)**
+# 🍁 Ginko-MD — Bot WhatsApp Multi-Device
 
-<p align="center"> 
-<img src="https://iili.io/qpPn1K7.gif" alt="YukiBot-MD" style="width: 75%; height: auto; max-width: 100px;">
-
-<p align="center"> 
-<a href="#"><img title="YukiBot-MD" src="https://img.shields.io/badge/¡Disfruta de un Bot totalmente gratuito, con múltiples funciones y de código abierto! -purple?colorA=%239b33b0&colorB=%231c007b&style=for-the-badge"></a> 
-</p>
+Bot de WhatsApp estable, multifuncional, basado en Baileys (MD).
+Proyecto propio adaptado desde YukiBot-MD por Destroy.
 
 ---
 
-## 🪾 Descripción 
+## 📝 Descripción
 
-Yuki Bot es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrece una variedad de características para mejorar tu experiencia en WhatsApp.
-
----
-
-## 🥦 Características
-
-- Comandos Gacha (Y más juegos)
-- Comandos de economia
-- Respuestas automáticas
-- Gestión de grupos
-- Integración con APIs externas
+Ginko-MD es un bot de WhatsApp con muchísimas funciones: descargas de música/videos, stickers, juegos/gacha, economía, IA, gestión de grupos, anti-link, bienvenidas, y mucho más. Funciona en Termux/Android, VPS Linux, Pterodactyl y Docker.
 
 ---
 
-### Instalaciónes Básicas
+## ✅ Características
+- Descargas de YouTube (audio/video), TikTok, Instagram, Facebook, Twitter/X
+- Creador de stickers (con texto incluido)
+- Comandos de gacha y economía
+- Gestión completa de grupos (kick, add, promote, demote, anti-link, bienvenidas)
+- Comandos de IA/chat y traductor
+- Respuestas automáticas y menciones
+- Auto-reconexión si se cae la conexión
+- Código de vinculación de 8 dígitos (pairing code), no necesita QR
 
-<details>
-<summary><strong>🍒 Cloud</strong> — Shell</summary>
+---
 
-```bash
-git clone https://github.com/iamDestroy/YukiBot-MD
-```
+## 🚀 Instalación
 
-```bash
-cd YukiBot-MD
-```
+### 📱 Termux (Android)
+Ejecuta estos comandos UNO POR UNO en Termux:
 
-```bash
-yarn install
-```
-
-```bash
-npm install
-```
-
-```bash
-npm start
-```
-
-</details>
-
-<details>
-<summary><strong>🍒 Termux</strong> — Manualmente</summary>
-
+1. Dar permiso de almacenamiento (solo la primera vez):
 ```bash
 termux-setup-storage
 ```
+
+2. Instalar dependencias del sistema:
 ```bash
-apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
+apt update && apt upgrade -y && pkg install -y git nodejs-lts ffmpeg imagemagick
 ```
 
+3. Clonar el repositorio:
 ```bash
-git clone https://github.com/iamDestroy/YukiBot-MD
+git clone https://github.com/riokuroxi-svg/Ginko-MD.git
 ```
 
+4. Entrar a la carpeta:
 ```bash
-cd YukiBot-MD
+cd Ginko-MD
 ```
 
+5. Instalar dependencias de Node:
 ```bash
-yarn install
+npm install --no-audit --no-fund
 ```
 
-```bash
-npm install
-```
+6. Configurar tu número de owner:
+Abre el archivo `settings.js` y cambia el número en la línea `global.owner` por tu número (solo dígitos, sin + ni espacios, ejemplo México: `525574370309`).
 
+7. Arrancar el bot:
 ```bash
 npm start
 ```
 
-> *Si aparece **(Y/I/N/O/D/Z) [default=N] ?** use la letra **"y"** y luego **"ENTER"** para continuar con la instalación.*
+> *Si aparece el mensaje **(Y/I/N/O/D/Z) [default=N] ?** durante la instalación, escribe la letra **"y"** y presiona ENTER para continuar.*
 
-</details>
+---
 
-<details>
-<summary><strong>🍒 Comandos para tener mas tiempo activo</strong> — el Bot</summary>
-
-> *Ejecutar estos comandos dentro de la carpeta YukiBot-MD*
+### ☁️ VPS Linux (Ubuntu/Debian)
 ```bash
-termux-wake-lock && npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs 
-``` 
-
-#### Opciones Disponibles
-> *Esto eliminará todo el historial que hayas establecido con PM2:*
-```bash 
-pm2 delete index
-``` 
-
-> *Si tienes cerrado Termux y quiere ver de nuevo la ejecución use:*
-```bash 
-pm2 logs 
-``` 
-
-> *Si desea detener la ejecución de Termux use:*
-```bash 
-pm2 stop index
-``` 
-
-> *Si desea iniciar de nuevo la ejecución de Termux use:*
-```bash 
-pm2 start index
+apt update && apt upgrade -y
+apt install -y git nodejs npm ffmpeg imagemagick
+git clone https://github.com/riokuroxi-svg/Ginko-MD.git
+cd Ginko-MD
+npm install
+# Edita settings.js con tu número
+npm start
 ```
 
---- 
+---
 
-### En caso de detenerse
-> _Si despues que ya instalastes tu bot y termux te salta en blanco, se fue tu internet o reiniciaste tu celular, solo realizaras estos pasos:_
+## ⚡ Para dejarlo corriendo en segundo plano (Termux/VPS)
+Para que no se apague cuando cierres Termux, usa PM2:
 ```bash
-cd && cd YukiBot-MD && npm start
+npm i -g pm2
+termux-wake-lock
+pm2 start index.js --name ginko
+pm2 save
 ```
+
+Comandos útiles de PM2:
+- Ver los logs en tiempo real: `pm2 logs ginko`
+- Parar el bot: `pm2 stop ginko`
+- Reiniciar: `pm2 restart ginko`
+- Borrar el proceso: `pm2 delete ginko`
+
 ---
 
-### Obtener nuevo inicio de Sessión 
-> *Detén el bot, haz click en el símbolo (ctrl) [default=z] usar la letra "z" + "ENTER" hasta que salga algo verdes similar a: `YukiBot-MD $`*
- 
-```bash 
-cd && cd YukiBot-MD && rm -rf Sessions/Owner && npm start
+## 📌 Si se apaga o se corta el internet
+Solo vuelve a entrar a la carpeta y arranca de nuevo:
+```bash
+cd ~/Ginko-MD && npm start
 ```
-</details>
+
+## 🔄 Volver a vincular de cero
+Si quieres cambiar el número o se corrompe la sesión:
+```bash
+cd ~/Ginko-MD
+rm -rf Sessions/Owner
+npm start
+```
 
 ---
 
-### Patrocinadores del Proyecto
-
-<details>
-<summary><strong>☁️ Yuki</strong> — API</summary>
-
-<div align="center">
-  <a href="https://api.yuki-wabot.my.id">
-    <img src="https://api.yuki-wabot.my.id/favicon.ico" alt="Logo" height="125px">
-  </a>
-</div>
-
-### 🌱 Enlaces Principales
-| Servicio | Enlace |
-|------------|-----------|
-| Dashboard | [Abrir](https://api.yuki-wabot.my.id) |
-| Store | [Abrir](https://api.yuki-wabot.my.id/store) 
-| Soporte | [Visitar](https://api.yuki-wabot.my.id/ticket)  
-| Estado de Servicios | [Ver](https://api.yuki-wabot.my.id/stats) |
-| Canal | [Abrir](https://whatsapp.com/channel/0029Vb64nWqLo4hb8cuxe23n) 
-
-</details>
-
-<details>
-<summary><strong>☁️ Evogb</strong> — API</summary>
-
-<div align="center">
-  <a href="https://api.evogb.org">
-    <img src="https://api.evogb.org/favicon.ico" alt="Logo" height="125px">
-  </a>
-</div>
-
-### 🐢 Enlaces Principales
-| Servicio | Enlace |
-|------------|-----------|
-| Dashboard | [Abrir](https://api.evogb.org) |
-| Store | [Abrir](https://api.evogb.org/store) 
-| Soporte | [Visitar](https://api.evogb.org/ticket)  
-| Estado de Servicios | [Ver](https://api.evogb.org/stats) |
-| Canal | [Abrir](https://whatsapp.com/channel/0029Vb6mZ5TIt5s4mgJuim34) 
-
-</details>
-
-<details>
-<summary><strong>☁️ Akirax</strong> — Hosting</summary>
-
-<div align="center">
-  <a href="https://home.akirax.net">
-    <img src="https://cdn2.sockywa.xyz/JG8PX.jpeg" alt="Logo" height="125px">
-  </a>
-</div>
-
-### 🐋 Enlaces Principales
-| Servicio | Enlace |
-|------------|-----------|
-| Sitio Web | [Visitar](https://docs.akirax.net) |
-| Home | [Abrir](https://home.akirax.net) |
-| Panel | [Abrir](https://console.akirax.net) | 
-| Soporte (Matías) | [Contactar](https://wa.me/5491164123932) |
-| Canal de WhatsApp | [Unirse](https://whatsapp.com/channel/0029VaYTBn3DZ4LaHbgzxw0B) |
-
-</details>
-
----
-
-### 🦋 Colaboradores
-<a href="https://api.yuki-wabot.my.id">
-  <img src="https://contrib.rocks/image?repo=iamDestroy/YukiBot-MD" />
-</a>
-
-### 🌼 Agradecimientos
-[![Carlos](https://github.com/AzamiJs.png?size=120)](https://github.com/AzamiJs)
-
-### 💐 Propietario
-[![King](https://github.com/iamDestroy.png?size=120)](https://github.com/iamDestroy)
+## 🙏 Créditos
+- Basado originalmente en **YukiBot-MD** por [@iamDestroy](https://github.com/iamDestroy)
+- Librería de conexión: Baileys (WhiskeySockets) / WaSocket

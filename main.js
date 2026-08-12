@@ -14,7 +14,7 @@ function getBotPrefixRegex(botJid, settings) {
   const rawBotname = settings.namebot || 'Bot';
   const tipo = settings.type || 'Sub';
   const cleanBotname = rawBotname.replace(/[^a-zA-Z0-9\s]/g, '');
-  const namebot = cleanBotname || 'Yuki';
+  const namebot = cleanBotname || 'Ginko';
   const shortForms = [namebot.charAt(0), namebot.split(" ")[0], tipo.split(" ")[0], namebot.split(" ")[0].slice(0, 2), namebot.split(" ")[0].slice(0, 3)];
   const prefixes = shortForms.map(name => `${name}`);
   prefixes.unshift(namebot);
@@ -84,7 +84,7 @@ export default async (sock, msg) => {
   users.stats[today].msgs++;
   db.setChatUser(from, sender, 'stats', users.stats);
 
-  const rawBotname = settings.namebot || 'Yuki';
+  const rawBotname = settings.namebot || 'Ginko';
   const { regex: prefix, namebot } = getBotPrefixRegex(botJid, settings);
   const tipo = settings.type || 'Sub';
   const strRegex = (str) => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
@@ -137,7 +137,7 @@ export default async (sock, msg) => {
     if (!isOwner && !cmds.includes(command)) return;
   }
   if (chat?.isBanned && !(command === 'bot' && text === 'on') && !isOwner) {
-    await msg.reply(`ꕥ El bot *${settings.botname || 'Yuki'}* está desactivado en este grupo.\n\n> ✎ Un *administrador* puede activarlo con el comando:\n> » *${usedPrefix}bot on*`);
+    await msg.reply(`ꕥ El bot *${settings.botname || 'Ginko-MD'}* está desactivado en este grupo.\n\n> ✎ Un *administrador* puede activarlo con el comando:\n> » *${usedPrefix}bot on*`);
     return;
   }
 

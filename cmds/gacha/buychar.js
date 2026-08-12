@@ -16,7 +16,7 @@ export default {
     }    
     try {
       if (!args.length) {
-        return msg.reply(`❀ Debes especificar un personaje para comprar.\n> Ejemplo » *${usedPrefix + command} Yuki Suou*`);
+        return msg.reply(`❀ Debes especificar un personaje para comprar.\n> Ejemplo » *${usedPrefix + command} Ginko-MD*`);
       }      
       const queryBuy = args.join(' ').toLowerCase();
       const idBuy = Object.keys(chat.sales).find(id => (chat.sales[id]?.name || '').toLowerCase() === queryBuy);

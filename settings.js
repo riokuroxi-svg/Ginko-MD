@@ -2,19 +2,22 @@ import { watchFile, unwatchFile } from "fs";
 import chalk from "chalk";
 import { fileURLToPath } from "url";
 
-global.owner = ['573115975891', '50498273976'];
+// Pon AQUÍ tu número de teléfono como owner (solo dígitos, sin + ni espacios)
+// Ejemplo: México 525574370309
+global.owner = ['525574370309'];
 
-global.dev = "© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜";
+// Créditos originales (los dejamos por respeto al autor, pero tu bot es Ginko-MD)
+global.dev = "🍁 Ginko-MD | Basado en YukiBot-MD por Destroy";
 global.links = {
-  api: 'https://api.yuki-wabot.my.id',
-  channel: "https://whatsapp.com/channel/0029Vb64nWqLo4hb8cuxe23n",
-  github: "https://github.com/iamDestroy/YukiBot-MD",
-  gmail: "thekingdestroy507@gmail.com"
+  channel: "",
+  github: "https://github.com/riokuroxi-svg/Ginko-MD-V1",
+  gmail: ""
 }
 global.my = {
-  ch1: '120363401404146384@newsletter'
+  ch1: ''
 };
 
+// APIs externas (NO CAMBIAR — son necesarias para que funcionen los comandos)
 global.APIs = { 
   yuki: { url: "https://api.yuki-wabot.my.id", key: "YukiBot-MD" },
   vreden: { url: "https://api.vreden.web.id", key: null },
@@ -24,10 +27,14 @@ global.APIs = {
   siputzx: { url: "https://app.siputzx.my.id", key: null }
 };
 
+// Nombre predeterminado del bot
+global.botname = "Ginko-MD";
+
+// Mensajes por defecto
 global.mess = {
-  socket: '《✧》 Este comando solo puede ser ejecutado por un Socket.',
-  admin: '《✧》 Este comando solo puede ser ejecutado por los Administradores del Grupo.',
-  botAdmin: '《✧》 Este comando solo puede ser ejecutado si el Socket es Administrador del Grupo.'
+  socket: '⚠️ Este comando solo puede ser ejecutado por un sub-bot.',
+  admin: '🔒 Este comando solo puede ser ejecutado por los Administradores del Grupo.',
+  botAdmin: '⚠️ Necesito ser Administrador del Grupo para ejecutar este comando.'
 };
 
 let file = fileURLToPath(import.meta.url);

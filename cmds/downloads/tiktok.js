@@ -10,7 +10,7 @@ export default {
     }
     const text = args.join(" ")
     const isUrl = /(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)
-    const endpoint = isUrl ? `${global.APIs.yuki.url}/dl/tiktok?url=${encodeURIComponent(text)}&key=${global.APIs.yuki.key}` : `${global.APIs.yuki.url}/search/tiktok?query=${encodeURIComponent(text)}&key=${global.APIs.yuki.key}`
+    const endpoint = isUrl ? `${global.APIs.Ginko.url}/dl/tiktok?url=${encodeURIComponent(text)}&key=${global.APIs.Ginko.key}` : `${global.APIs.Ginko.url}/search/tiktok?query=${encodeURIComponent(text)}&key=${global.APIs.Ginko.key}`
     try {
       const res = await fetch(endpoint)
       if (!res.ok) throw new Error(`El servidor respondió con ${res.status}`)

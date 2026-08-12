@@ -38,12 +38,12 @@ function normalizePhone(input) {
 }
 
 const { say } = cfonts
-console.log(chalk.magentaBright('\n❀ Iniciando...'))
-  say('Yuki Suou', {
+console.log(chalk.magentaBright('\n🍁 Iniciando...'))
+  say('Ginko-MD', {
   align: 'center',           
-  gradient: ['red', 'blue'] 
+  gradient: ['red', 'magenta'] 
 })
-  say('Made with love by Destroy', {
+  say('Bot WhatsApp Multi-Device', {
   font: 'console',
   align: 'center',
   gradient: ['blue', 'magenta']

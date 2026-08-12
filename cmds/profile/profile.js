@@ -61,7 +61,7 @@ export default {
       }
     }    
     const haremCount = ownedIDs.length;
-    const perfil = await sock.profilePictureUrl(userId, 'image').catch((_) => 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg');    
+    const perfil = await sock.profilePictureUrl(userId, 'image').catch((_) => 'https://cdn.Ginko-wabot.my.id/files/2PVh.jpeg');    
     const allUsers = db.getUser() || [];
     const users = Array.isArray(allUsers) ? allUsers.map(u => ({ ...u, jid: u.id })) : [];
     const sortedLevel = users.sort((a, b) => (b.level || 0) - (a.level || 0));    

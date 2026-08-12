@@ -28,7 +28,7 @@ export default {
         return msg.reply(`❀ No tienes personajes reclamados en tu harem.`);
       }      
       if (!args.length) {
-        return msg.reply(`❀ Debes especificar un personaje para eliminar.\n> Ejemplo » *${usedPrefix + command} Yuki Suou*`);
+        return msg.reply(`❀ Debes especificar un personaje para eliminar.\n> Ejemplo » *${usedPrefix + command} Ginko-MD*`);
       }      
       const inputName = args.join(' ').toLowerCase().trim();
       const structure = await loadCharacters();

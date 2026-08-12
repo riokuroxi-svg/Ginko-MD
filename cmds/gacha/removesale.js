@@ -15,7 +15,7 @@ export default {
       try { chat.sales = JSON.parse(chat.sales); } catch { chat.sales = {}; }
     }    
     if (!args.length) {
-      return msg.reply(`❀ Debes especificar un personaje para eliminar.\n> Ejemplo » *${usedPrefix + command} Yuki Suou*`);
+      return msg.reply(`❀ Debes especificar un personaje para eliminar.\n> Ejemplo » *${usedPrefix + command} Ginko-MD*`);
     }    
     try {
       const nameRemove = args.join(' ').toLowerCase();
