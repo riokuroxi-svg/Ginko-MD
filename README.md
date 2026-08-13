@@ -1,222 +1,195 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=gradient&customColorList=12,23,25,30&text=🌿%20GINKO-MD%20🌿&fontSize=54&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Bot%20de%20WhatsApp%20Multi-Device%20·%20Ligero,%20rápido%20y%20fácil%20de%20usar&descSize=18&descAlignY=60" width="100%"/>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&duration=2800&pause=600&color=4ADE80&center=true&vCenter=true&width=640&lines=🌿+Tu+bot+de+WhatsApp+con+estilo+🌿;⚡+Rápido+como+el+viento+⚡;🤖+IA+Gemini+integrada+🤖;🎵+Descargas%2C+TTS%2C+Stickers+y+más" alt="Typing SVG"/>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=800&color=F472B6&center=true&vCenter=true&width=640&lines=📱+Funciona+en+Termux+(Android);🖥️+Compatible+con+VPS+y+panel;🍎+Detección+automática+de+iPhone" alt="Typing SVG"/>
+
+<br/>
+
+<img src="https://img.shields.io/badge/WhatsApp-Bot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/Baileys-Multi%20Device-25D366?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Termux-Compatible-3DDC84?style=for-the-badge&logo=android&logoColor=white"/>
+<img src="https://img.shields.io/badge/Idioma-Español-FF6B6B?style=for-the-badge"/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
+
+</div>
+
+## 🌿 ¿Qué es Ginko-MD?
+
 <p align="center">
-<img src="./assets/bocchi-banner.png" alt="Bocchi banner" width="100%"/>
+  <img src="https://raw.githubusercontent.com/riokuroxi-svg/Ginko-MD/main/media/menu.jpg" alt="Menú de Ginko-MD (Bocchi)" width="620"/>
 </p>
 
-<h1 align="center">🍁 Ginko-MD</h1>
-<h3 align="center">Bot de WhatsApp Multi-Device — Estable, rápido y multifuncional</h3>
+> 🌱 **Ginko-MD** es un bot de WhatsApp Multi-Device en español, pensado para correr **ligero** en Termux (Android) sin que te rompa la cabeza. Ideal para grupos, descargas, stickers, IA y entretenimiento.
 
-<p align="center">
-<a href="https://github.com/riokuroxi-svg/Ginko-MD/stargazers/"><img title="Estrellas" src="https://img.shields.io/github/stars/riokuroxi-svg/Ginko-MD?color=e11d48&style=for-the-badge&logo=github"></a>
-<a href="https://github.com/riokuroxi-svg/Ginko-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/riokuroxi-svg/Ginko-MD?color=f97316&style=for-the-badge&logo=github"></a>
-<a href="https://github.com/riokuroxi-svg/Ginko-MD/issues"><img title="Issues" src="https://img.shields.io/github/issues/riokuroxi-svg/Ginko-MD?color=eab308&style=for-the-badge&logo=github"></a>
-<img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=nodedotjs">
-<img src="https://img.shields.io/badge/Baileys-MD-25D366?style=for-the-badge&logo=whatsapp">
-</p>
+- 🇲🇽 **Hecho por y para hispanohablantes**
+- 📱 **Corre en tu celular** con Termux (no necesitas PC)
+- 🧠 **IA Gemini** integrada de fábrica
+- 🔊 **Notas de voz con voz femenina** (es-MX Dalia, Edge-TTS)
+- 🖼️ **Menú con imagen** y botón nativo de canal de WhatsApp
 
-<p align="center">
-  <sub>🍁 IG: <a href="https://instagram.com/__ikg.05">@__ikg.05</a></sub>
-</p>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
----
+## 📦 Instalación en Termux (Android)
 
-## 📖 Descripción
-Ginko-MD es un bot para WhatsApp Multi-Device construido sobre WaSocket/Baileys. Tiene todas las funciones que necesitas: descargas de música y videos, stickers, juegos de gacha, sistema de economía, gestión completa de grupos, comandos de IA, anti-enlaces, bienvenidas y mucho más. Funciona perfectamente en **Termux (Android)**, VPS Linux y paneles Pterodactyl/BoxMine.
+> 📱 Copia y pega estos comandos **uno por uno** en Termux. No necesitas saber programar.
 
----
-
-## ✨ Características principales
-| 📂 Categoría | Funciones disponibles |
-|---|---|
-| 📥 **Descargas** | YouTube (audio 320kbps / video), TikTok, Instagram, Facebook, Twitter/X, Pinterest, Mediafire, Google Drive, APKs |
-| 🎨 **Stickers** | Crea stickers desde imagen/video, stickers con texto, packs de stickers, metadata personalizada |
-| 👥 **Grupos** | Kick / add / promover / degradar admins, anti-enlaces, mensajes de bienvenida, anti-eliminar mensajes |
-| 🎮 **Juegos y economía** | Sistema de gacha/waifus, monedas, niveles/experiencia, dado, moneda |
-| 🤖 **IA y utilidades** | Chat con IA, traductor automático, texto a voz, búsqueda de imágenes, creador de códigos QR |
-| 🛡️ **Estabilidad** | Auto-reconexión, código de vinculación de 8 dígitos, anti-ban, no se cae por errores en comandos |
-
----
-
----
-
-## 🚀 Instalación
-
-### 📱 Método 1: Termux (Android)
-**Copia y pega estos comandos UNO POR UNO en Termux, no te saltes ninguno:**
-
-#### Paso 1: Dar permiso de almacenamiento
+### 1️⃣ Actualizar paquetes
 ```bash
-termux-setup-storage
-```
-*Acepta el permiso cuando aparezca la ventana.*
-
-#### Paso 2: Actualizar paquetes e instalar dependencias del sistema
-```bash
-apt update && apt upgrade -y
-pkg install -y git nodejs-lts ffmpeg imagemagick
-```
-*Si te pregunta algo durante la instalación, escribe `y` y presiona ENTER.*
-
-#### Paso 3: Clonar el repositorio de Ginko-MD
-```bash
-git clone https://github.com/riokuroxi-svg/Ginko-MD.git
+pkg update && pkg upgrade -y
 ```
 
-#### Paso 4: Entrar a la carpeta del bot
+### 2️⃣ Instalar herramientas necesarias
 ```bash
+pkg install -y git nodejs python ffmpeg
+```
+
+### 3️⃣ Clonar el bot
+```bash
+git clone https://github.com/riokuroxi-svg/Ginko-MD
 cd Ginko-MD
 ```
 
-#### Paso 5: Instalar dependencias de Node.js
+### 4️⃣ Instalar dependencias
 ```bash
-npm install --no-audit --no-fund
+npm install
 ```
-*Espera que termine, puede tardar de 2 a 5 minutos.*
 
-#### Paso 6: Configurar tu número (dueño del bot)
-Abre el archivo de configuración:
-```bash
-nano settings.js
-```
-Busca la línea que dice:
+### 5️⃣ (Opcional) Configurar tu key de Gemini para .ai
+Crea un archivo `config.private.js` dentro de la carpeta `Ginko-MD` con este contenido (usa la key que te di en el bot):
 ```js
-global.owner = ['525574370309'];
+// config.private.js
+export const geminiKey = "TU_KEY_DE_GEMINI_AQUI";
+export default { geminiKey };
 ```
-Cambia el número por tu número de teléfono (solo dígitos, sin `+`, sin espacios, con código de país). Por ejemplo, si eres de México es `52` seguido de tu número.
 
-Guarda el archivo:
-1. Presiona `Ctrl + O`
-2. Presiona `ENTER`
-3. Presiona `Ctrl + X`
-
-#### Paso 7: Arrancar el bot por primera vez
+### 6️⃣ Iniciar el bot
 ```bash
 npm start
 ```
-- Cuando aparezca el menú de opciones, elige la opción `2` para usar código de 8 dígitos.
-- Ingresa el número del bot con código de país cuando te lo pida.
-- Copia el código de vinculación que aparece en pantalla y ponlo en WhatsApp:
-  > Ajustes → Dispositivos vinculados → Vincular un dispositivo → Vincular con número de teléfono
+Escanea el QR con **WhatsApp → Dispositivos vinculados → Vincular dispositivo**, ¡y listo! 🌿
 
-✅ ¡Listo! El bot estará conectado.
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
----
+## ⚙️ Características
 
-### ☁️ Método 2: VPS Linux (Ubuntu/Debian)
+<div align="center">
+
+| 🌿 Función | 💬 Descripción |
+|:---|:---|
+| 📥 **Descargas** | Música MP3 de YouTube, TikTok sin marca de agua, Deezer, Pinterest |
+| 🔊 **TTS / Notas de voz** | `.tts <texto>` envía una nota de voz con voz femenina mexicana (Dalia) |
+| 🧠 **IA (Gemini)** | `.ai` / `.gemini` con memoria de la conversación, soporta imágenes |
+| 🖼️ **Stickers** | Crea stickers rápido desde imágenes/videos sin marca de agua |
+| 📊 **Encuestas** | `.encuesta` con polls nativos de WhatsApp |
+| 🎌 **Anime** | `.anime` para buscar info de animes (AniList) |
+| 😄 **Diversión** | Chistes, datos, consejos, piropos, 8ball, ship, dado, moneda |
+| 🔗 **Utilidades** | Códigos QR, acortar URLs, morse, recordatorios, .wastalk |
+| 🔤 **Letras** | `.letra <canción>` busca letras de canciones |
+| 💱 **Crypto** | `.btc` / `.crypto` para ver precios en tiempo real (CoinGecko) |
+| 📝 **Código a imagen** | `.carbon` convierte código en imagen bonita |
+| 🎵 **Deezer** | `.deezer` busca y descarga música en alta calidad |
+| 👥 **Administración** | Kick, ban, promote, demote, antilink, bienvenidas automáticas |
+| 🍎 **Compatible iPhone** | Detecta iPhones y evita mensajes que les causan problemas |
+| 📣 **Canal oficial** | Botón nativo "Ver canal" en el menú principal |
+
+</div>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
+
+## 🚀 Comandos rápidos
+
+| Categoría | Ejemplos |
+|:---|:---|
+| 🤖 **IA** | `.ai <pregunta>`, `.ai reset` |
+| 🔊 **Voz** | `.tts hola qué onda`, `.voz cómo estás` |
+| 📥 **Descargas** | `.play <canción>`, `.tiktok <enlace>`, `.ytmp3 <enlace>` |
+| 🎌 **Anime** | `.anime bocchi the rock` |
+| 🔧 **Utilidades** | `.qrcode hola`, `.acortar <url>`, `.morse hola` |
+| 📊 **Grupo** | `.encuesta opción1|opción2|opción3`, `.kick @usuario` |
+| 😄 **Diversión** | `.chiste`, `.8ball sí o no`, `.ship @user1 @user2`, `.dado` |
+| ℹ️ **Info** | `.menu`, `.help`, `.infobot`, `.letra <canción>` |
+| 🔍 **GitHub** | `.gh riokuroxi-svg` |
+| 💱 **Crypto** | `.btc`, `.crypto ethereum` |
+
+> 💡 Usa **`.menu`** dentro de WhatsApp para ver la lista completa con todos los comandos y la imagen de Bocchi.
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
+
+## 💻 Instalación en VPS / Linux (PC o servidor)
+
+Si prefieres correrlo en una PC o servidor Ubuntu/Debian:
+
 ```bash
-# Actualizar sistema
 apt update && apt upgrade -y
-apt install -y git nodejs npm ffmpeg imagemagick
-
-# Clonar repo
-git clone https://github.com/riokuroxi-svg/Ginko-MD.git
+apt install -y git nodejs npm ffmpeg
+git clone https://github.com/riokuroxi-svg/Ginko-MD
 cd Ginko-MD
-npm install --no-audit --no-fund
-
-# Edita tu número de dueño
-nano settings.js
-
-# Arrancar
+npm install
 npm start
 ```
 
----
+> ⚠️ **En Termux NO instales ffmpeg-static** (no funciona en Android). Usa el ffmpeg nativo (`pkg install ffmpeg`).
 
-### 🟢 Dejar el bot corriendo en segundo plano (PM2)
-Para que no se apague cuando cierres Termux o la terminal:
-```bash
-# Instalar PM2 globalmente
-npm install -g pm2
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
-# Solo para Termux: mantener la aplicación encendida
-termux-wake-lock
+## 🛠️ Comandos útiles en Termux
 
-# Iniciar el bot en segundo plano
-pm2 start index.js --name ginko
-pm2 save
-```
+| Si pasa esto... | Haz esto |
+|:---|:---|
+| Se cierra el bot | `cd Ginko-MD && npm start` |
+| Error al iniciar | `rm -rf sessions && npm start` (borra sesión, escanea QR de nuevo) |
+| Error de dependencias | `rm -rf node_modules package-lock.json && npm install` |
+| Quieres la última versión | `cd Ginko-MD && git pull` |
+| Algo se rompe tras actualizar | `git reset --hard backup-antes-fusion-13ago` |
 
-| Acción | Comando |
-|---|---|
-| Ver logs en tiempo real (lo que está pasando) | `pm2 logs ginko` |
-| Parar el bot | `pm2 stop ginko` |
-| Reiniciar el bot | `pm2 restart ginko` |
-| Eliminar el proceso de PM2 | `pm2 delete ginko` |
-| Ver estado del bot | `pm2 status` |
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
----
-
-## 🔄 Solución de problemas comunes
-
-### Si se cortó el internet o se apagó el bot
-Solo vuelve a entrar a la carpeta y arráncalo de nuevo:
-```bash
-cd ~/Ginko-MD && npm start
-```
-
-### Volver a vincular de cero (cambiar de número)
-Si quieres borrar la sesión actual y vincular otro número:
-```bash
-cd ~/Ginko-MD
-rm -rf Sessions/Owner
-npm start
-```
-
-### Error "no se encontró el módulo" o dependencias rotas
-Vuelve a instalar los paquetes:
-```bash
-cd ~/Ginko-MD
-rm -rf node_modules package-lock.json
-npm install --no-audit --no-fund
-```
-
-### El código de vinculación no aparece o da error
-Asegúrate de que el número del bot esté escrito correctamente (solo dígitos, con código de país, sin `+` ni espacios). Si sigue fallando, borra la sesión con el comando de arriba y vuelve a arrancar.
-
----
-
-## 📝 Cómo usar el bot
-El prefijo por defecto es el **punto** (`.`). Algunos comandos básicos:
-| Comando | Qué hace |
-|---|---|
-| `.play <canción>` | Descarga música de YouTube |
-| `.mp4 <video>` | Descarga video de YouTube |
-| `.menu` | Muestra la lista completa de comandos |
-| `.sticker` | Convierte una imagen/video en sticker al responderla |
-| `.ping` | Muestra la velocidad de respuesta del bot |
-
-Puedes cambiar el prefijo o cualquier otra configuración editando el archivo `settings.js`.
-
----
-
-## 📁 Estructura del proyecto
-```
-Ginko-MD/
-├── assets/             # Imágenes y recursos
-├── cmds/               # Todos los comandos del bot (por categorías)
-│   ├── downloads/      # Comandos de descarga (ytmp3, tiktok, ig, fb...)
-│   ├── group/          # Comandos de administración de grupos
-│   ├── gacha/          # Sistema de gacha, waifus y economía
-│   ├── main/           # Comandos básicos: menú, help, ping
-│   ├── stickers/       # Creador de stickers
-│   └── utils/          # Utilidades: IA, traductor, imágenes
-├── core/               # Lógica interna (conexión a WA, base de datos)
-├── Sessions/           # Aquí se guarda tu sesión de WhatsApp (no borrar si no quieres volver a vincular)
-├── tmp/                # Archivos temporales que se borran automáticamente
-├── index.js            # Punto de entrada del bot y banner
-├── main.js             # Router y manejador de comandos
-├── settings.js         # Archivo de CONFIGURACIÓN PRINCIPAL (tu número, ajustes)
-└── package.json        # Dependencias
-```
-
----
-
-## ⚠️ Aviso importante
-Este proyecto es para fines educativos y uso personal. El uso de bots de WhatsApp puede violar los Términos de Servicio de WhatsApp. Usa este bot bajo tu propia responsabilidad. No nos hacemos responsables por baneos o suspensiones de cuenta.
-
----
+## 📣 Canal oficial y redes
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Made%20with-%F0%9F%8D%81-orange?style=flat-square">
-  <br>
-  <sub>🍁 Ginko-MD — 2025-2026</sub>
+  <a href="https://whatsapp.com/channel/0029VbDVFpSGJP89hfZUe522">
+    <img src="https://img.shields.io/badge/📣%20Canal%20de%20WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
+  </a>
+  <a href="https://www.instagram.com/__ikg.05">
+    <img src="https://img.shields.io/badge/📸%20Instagram%20del%20creador-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
+  </a>
+  <a href="https://github.com/riokuroxi-svg/Ginko-MD">
+    <img src="https://img.shields.io/badge/🌿%20Repositorio%20principal-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+  <a href="https://github.com/riokuroxi-svg/Ginko-MD-Lab">
+    <img src="https://img.shields.io/badge/🧪%20Ginko--MD--Lab%20(experimentos)-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
 </p>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
+
+## ⭐ Créditos
+
+- 🌿 **Creador:** [riokuroxi-svg](https://github.com/riokuroxi-svg) 🇲🇽
+- 🤖 **Librería:** [@whiskeysockets/baileys](https://github.com/WhiskeySockets/Baileys) (WhatsApp Multi-Device)
+- 🧠 **IA:** Google Gemini (Google AI Studio)
+- 🔊 **TTS:** Microsoft Edge-TTS (voz es-MX-DaliaNeural)
+- 🎨 **Inspiración visual del README:** [La Suki Bot](https://github.com/russellxz/LASUKIBOT)
+- 💚 Gracias a la comunidad de bots de WhatsApp por las APIs y el apoyo
+
+<div align="center">
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=3000&pause=800&color=4ADE80&center=true&vCenter=true&width=640&lines=🌿+GINKO-MD+🌿;Simple,+veloz+y+siempre+mejorando;¡Que+lo+disfrutes!+✨" alt="Typing SVG"/>
+
+<br/>
+
+<a href="https://github.com/riokuroxi-svg/Ginko-MD/stargazers">
+  <img src="https://img.shields.io/github/stars/riokuroxi-svg/Ginko-MD?style=social"/>
+</a>
+<a href="https://github.com/riokuroxi-svg/Ginko-MD/forks">
+  <img src="https://img.shields.io/github/forks/riokuroxi-svg/Ginko-MD?style=social"/>
+</a>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=140&color=gradient&customColorList=12,23,25,30&section=footer" width="100%"/>
+
+</div>
