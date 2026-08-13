@@ -1,5 +1,12 @@
 node_modules/
+.env
+session/
 Sessions/
 tmp/
-*.log
-.DS_Store
+audit/api-results.json
+config.private.js
+package-lock.json
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
