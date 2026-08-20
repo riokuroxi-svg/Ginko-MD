@@ -1,5 +1,6 @@
 import yts from 'yt-search'
 import fetch from 'node-fetch'
+import { processMp3ForWhatsApp } from '#lib/mp3Utils'
 
 const MAX_REINTENTOS = 3
 const ESPERA_BASE_MS = 1500
@@ -277,12 +278,23 @@ async function ejecutarDescarga(sock, job, modo, m) {
     if (tipo === 'audio') {
       const r = await descargarAudio(job.url)
       if (r.buffer.length > MAX_MB_AUDIO) throw new Error(`El audio es demasiado grande (más de ${Math.round(MAX_MB_AUDIO/1024/1024)} MB)`)
-      await sock.sendMessage(chat, {
-        [comoDoc ? 'document' : 'audio']: r.buffer,
+      // Procesar MP3 con portada personalizada y metadatos limpios para evitar AUD-xxxx
+      let audioFinal = r.buffer
+      let segundos = 0
+      try {
+        await sock.sendMessage(chat, { react: { text: '🖼️', key: m.key } }).catch(() => {})
+        const procesado = await processMp3ForWhatsApp(r.buffer, sanitizeFilename(job.title))
+        audioFinal = procesado.buffer
+        segundos = procesado.seconds || 0
+      } catch (e) { console.log('[play/estable] Error procesando MP3:', e.message) }
+      const payload = {
+        [comoDoc ? 'document' : 'audio']: audioFinal,
         mimetype: 'audio/mpeg',
         fileName: `${sanitizeFilename(job.title)}.mp3`,
         ptt: false
-      }, { quoted: m })
+      }
+      if (!comoDoc && segundos > 0) payload.seconds = segundos
+      await sock.sendMessage(chat, payload, { quoted: m })
     } else {
       const r = await descargarVideo(job.url)
       if (r.buffer.length > MAX_MB_VIDEO) throw new Error(`El video es demasiado grande (más de ${Math.round(MAX_MB_VIDEO/1024/1024)} MB)`)
@@ -341,7 +353,18 @@ const cmd = {
         const estado = await sock.sendMessage(msg.chat, { text: `⏳ Descargando *${title}*...` }, { quoted: msg }).catch(() => null)
         try {
           const r = await descargarAudio(url)
-          await sock.sendMessage(msg.chat, { audio: r.buffer, fileName: `${sanitizeFilename(title)}.mp3`, mimetype: 'audio/mpeg' }, { quoted: msg })
+          // Procesar MP3 con portada y metadatos limpios (evita AUD-xxxx)
+          let audioFinal = r.buffer
+          let segundos = 0
+          try {
+            await sock.sendMessage(msg.chat, { react: { text: '🖼️', key: msg.key } }).catch(() => {})
+            const procesado = await processMp3ForWhatsApp(r.buffer, sanitizeFilename(title))
+            audioFinal = procesado.buffer
+            segundos = procesado.seconds || 0
+          } catch (e) { console.log('[play/estable] Error procesando MP3 directo:', e.message) }
+          const payload = { audio: audioFinal, fileName: `${sanitizeFilename(title)}.mp3`, mimetype: 'audio/mpeg', ptt: false }
+          if (segundos > 0) payload.seconds = segundos
+          await sock.sendMessage(msg.chat, payload, { quoted: msg })
           try { if (estado?.key) await sock.sendMessage(msg.chat, { delete: estado.key }) } catch {}
         } catch (e) {
           await msg.reply(`《✧》No se pudo descargar el audio: ${e?.message || e}`)
